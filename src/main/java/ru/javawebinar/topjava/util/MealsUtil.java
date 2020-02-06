@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 import static ru.javawebinar.topjava.util.TimeUtil.isBetweenInclusive;
 
-public class UserMealsUtil {
+public class MealsUtil {
     public static void main(String[] args) {
         List<Meal> meals = Arrays.asList(
                 new Meal(LocalDateTime.of(2020, Month.JANUARY, 30, 10, 0), "Завтрак", 500),
@@ -40,11 +40,11 @@ public class UserMealsUtil {
         for (Meal meal : meals) {
             int calories = 0;
             for (Meal mealPerDay : meals) {
-                if (meal.getDateTime().toLocalDate().equals(mealPerDay.getDateTime().toLocalDate())) {
+                if (meal.getDate().equals(mealPerDay.getDate())) {
                     calories += mealPerDay.getCalories();
                 }
             }
-            if (isBetweenInclusive(meal.getDateTime().toLocalTime(), startTime, endTime)) {
+            if (isBetweenInclusive(meal.getTime(), startTime, endTime)) {
                 filtered.add(new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), calories > caloriesPerDay));
             }
         }
@@ -54,14 +54,14 @@ public class UserMealsUtil {
     public static List<MealTo> filteredByStreams(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         // TODO Implement by streams
         Map<LocalDate,Integer> caloriesToday = meals.stream()
-                                                    .collect(Collectors.groupingBy(userMeal->userMeal.getDateTime().toLocalDate()
+                                                    .collect(Collectors.groupingBy(Meal::getDate
                                                             ,Collectors.summingInt(Meal::getCalories)));
 
         return meals.stream()
-                .filter(userMeal -> isBetweenInclusive(userMeal.getDateTime().toLocalTime(),startTime,endTime))
+                .filter(userMeal -> isBetweenInclusive(userMeal.getTime(),startTime,endTime))
                 .map(userMeal -> new MealTo(userMeal.getDateTime()
                         ,userMeal.getDescription(),userMeal.getCalories()
-                        ,caloriesToday.get(userMeal.getDateTime().toLocalDate())>caloriesPerDay))
+                        ,caloriesToday.get(userMeal.getDate())>caloriesPerDay))
                 .collect(Collectors.toList());
     }
 }
