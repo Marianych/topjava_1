@@ -45,7 +45,7 @@ public class MealsUtil {
                 }
             }
             if (isBetweenInclusive(meal.getTime(), startTime, endTime)) {
-                filtered.add(new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), calories > caloriesPerDay));
+                filtered.add(createTo(meal, calories > caloriesPerDay));
             }
         }
         return filtered;
@@ -59,9 +59,11 @@ public class MealsUtil {
 
         return meals.stream()
                 .filter(userMeal -> isBetweenInclusive(userMeal.getTime(),startTime,endTime))
-                .map(userMeal -> new MealTo(userMeal.getDateTime()
-                        ,userMeal.getDescription(),userMeal.getCalories()
+                .map(userMeal -> createTo(userMeal
                         ,caloriesToday.get(userMeal.getDate())>caloriesPerDay))
                 .collect(Collectors.toList());
+    }
+    public static MealTo createTo (Meal meal, boolean excess){
+        return new MealTo(meal.getDateTime(),meal.getDescription(),meal.getCalories(),excess);
     }
 }
