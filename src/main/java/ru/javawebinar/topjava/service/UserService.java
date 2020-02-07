@@ -2,6 +2,7 @@ package ru.javawebinar.topjava.service;
 
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
+import ru.javawebinar.topjava.repository.inmemory.InMemoryUserRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.List;
@@ -12,6 +13,10 @@ import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
 public class UserService {
 
     private UserRepository repository;
+
+    public void setRepository(UserRepository repository) {
+        this.repository = repository;
+    }
 
     public User create(User user) {
         return repository.save(user);
