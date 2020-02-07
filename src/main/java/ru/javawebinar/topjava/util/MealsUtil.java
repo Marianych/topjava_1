@@ -7,10 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static ru.javawebinar.topjava.util.TimeUtil.isBetweenInclusive;
@@ -50,7 +47,7 @@ public class MealsUtil {
         return filtered;
     }
 
-    public static List<MealTo> filteredByStreams(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
+    public static List<MealTo> filteredByStreams(Collection<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         List<MealTo> mealsTo = getTo(meals, caloriesPerDay);
         return mealsTo.stream()
                 .filter(mto -> isBetweenInclusive(mto.getTime(), startTime, endTime))
@@ -58,10 +55,10 @@ public class MealsUtil {
     }
 
     public static MealTo createTo(Meal meal, boolean excess) {
-        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
+        return new MealTo(meal.getId(), meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 
-    public static List<MealTo> getTo(List<Meal> meals, int caloriesPerDay) {
+    public static List<MealTo> getTo(Collection<Meal> meals, int caloriesPerDay) {
         Map<LocalDate, Integer> caloriesToday = meals.stream()
                 .collect(Collectors.groupingBy(Meal::getDate
                         , Collectors.summingInt(Meal::getCalories)));
