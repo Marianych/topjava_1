@@ -10,7 +10,9 @@ public class UserServlet extends HttpServlet {
     private static final Logger LOG = LoggerFactory.getLogger(UserServlet.class);
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        SecurityUtil.setAuthUserId(userId);
+        response.sendRedirect("meals");
     }
 
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
