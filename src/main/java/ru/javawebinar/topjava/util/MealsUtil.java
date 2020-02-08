@@ -10,7 +10,7 @@ import java.time.Month;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static ru.javawebinar.topjava.util.TimeUtil.isBetweenInclusive;
+import static ru.javawebinar.topjava.util.Util.isBetweenInclusive;
 
 public class MealsUtil {
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
