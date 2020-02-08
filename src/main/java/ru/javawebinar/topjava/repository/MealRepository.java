@@ -4,6 +4,7 @@ import ru.javawebinar.topjava.model.Meal;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 public interface MealRepository {
     // null if updated meal do not belong to userId
@@ -19,5 +20,5 @@ public interface MealRepository {
     Collection<Meal> getAll(int userId);
 
     // ORDERED dateTime desc
-    Collection<Meal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userID);
+    List<Meal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userID);
 }

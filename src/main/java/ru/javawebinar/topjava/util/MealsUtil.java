@@ -1,7 +1,8 @@
 package ru.javawebinar.topjava.util;
 
+import org.springframework.lang.Nullable;
 import ru.javawebinar.topjava.model.Meal;
-import ru.javawebinar.topjava.model.MealTo;
+import ru.javawebinar.topjava.to.MealTo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,7 +28,7 @@ public class MealsUtil {
 //        List<MealTo> mealsTo = filteredByCycles(meals, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000);
 //        mealsTo.forEach(System.out::println);
 
-//        System.out.println(filteredByStreams(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000));
+//        System.out.println(getFilteredTo(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000));
 //        System.out.println(filteredByCycles(MEALS, LocalTime.of(7, 0), LocalTime.of(12, 0), 2000));
 
 
@@ -47,7 +48,7 @@ public class MealsUtil {
         return filtered;
     }
 
-    public static List<MealTo> filteredByStreams(Collection<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
+    public static List<MealTo> getFilteredTo(Collection<Meal> meals, @Nullable LocalTime startTime,@Nullable LocalTime endTime, int caloriesPerDay) {
         List<MealTo> mealsTo = getTo(meals, caloriesPerDay);
         return mealsTo.stream()
                 .filter(mto -> isBetweenInclusive(mto.getTime(), startTime, endTime))
