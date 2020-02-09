@@ -10,11 +10,11 @@ import org.springframework.test.context.junit4.SpringRunner;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.inmemory.InMemoryUserRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
-import ru.javawebinar.topjava.web.UserTestData;
+import ru.javawebinar.topjava.UserTestData;
 
 import java.util.Collection;
 
-import static ru.javawebinar.topjava.web.UserTestData.ADMIN;
+import static ru.javawebinar.topjava.UserTestData.ADMIN;
 
 @ContextConfiguration("classpath:spring/spring-app.xml")
 @RunWith(SpringRunner.class)

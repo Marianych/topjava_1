@@ -6,13 +6,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.inmemory.InMemoryUserRepository;
 import ru.javawebinar.topjava.util.exception.NotFoundException;
-import ru.javawebinar.topjava.web.UserTestData;
+import ru.javawebinar.topjava.UserTestData;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static ru.javawebinar.topjava.web.UserTestData.ADMIN;
+import static ru.javawebinar.topjava.UserTestData.ADMIN;
 
 public class InMemoryAdminRestControllerTest {
     private static ConfigurableApplicationContext appCtx;

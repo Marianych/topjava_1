@@ -3,14 +3,14 @@ package ru.javawebinar.topjava.repository.inmemory;
 import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
-import ru.javawebinar.topjava.web.UserTestData;
+import ru.javawebinar.topjava.UserTestData;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.javawebinar.topjava.web.UserTestData.ADMIN;
-import static ru.javawebinar.topjava.web.UserTestData.USER;
+import static ru.javawebinar.topjava.UserTestData.ADMIN;
+import static ru.javawebinar.topjava.UserTestData.USER;
 
 @Repository
 public class InMemoryUserRepository extends InMemoryBaseRepository<User> implements UserRepository {
