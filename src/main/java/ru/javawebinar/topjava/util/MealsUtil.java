@@ -14,8 +14,11 @@ import java.util.stream.Collectors;
 
 import static ru.javawebinar.topjava.util.Util.isBetweenInclusive;
 
-public class MealsUtil {
+public final class MealsUtil {
     public static final int DEFAULT_CALORIES_PER_DAY = 2000;
+
+    private MealsUtil() {
+    }
 
     public static List<MealTo> filteredByCycles(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         List<MealTo> filtered = new ArrayList<>();

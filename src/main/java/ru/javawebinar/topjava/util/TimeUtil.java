@@ -15,6 +15,9 @@ public class TimeUtil {
 //        return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) <= 0;
 //    }
 
+    private TimeUtil() {
+    }
+
     public String toString(LocalDateTime ldt) {
         return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
     }
