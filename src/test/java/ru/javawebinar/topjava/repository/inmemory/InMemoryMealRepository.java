@@ -24,7 +24,7 @@ public class InMemoryMealRepository implements MealRepository {
     private Map<Integer, InMemoryBaseRepository<Meal>> userMealsMap = new ConcurrentHashMap<>();
 
     {
-        InMemoryBaseRepository<Meal> userMeals = new InMemoryBaseRepository<>();
+        var userMeals = new InMemoryBaseRepository<Meal>();
         userMealsMap.put(UserTestData.USER_ID, userMeals);
         MealTestData.MEALS.forEach(meal -> userMeals.map.put(meal.getId(), meal));
     }
@@ -42,19 +42,19 @@ public class InMemoryMealRepository implements MealRepository {
     @Override
     public Meal save(Meal meal, int userId) {
         Objects.requireNonNull(meal, "meal must not be null");
-        InMemoryBaseRepository<Meal> meals = userMealsMap.computeIfAbsent(userId, uid -> new InMemoryBaseRepository<>());
+        var meals = userMealsMap.computeIfAbsent(userId, uid -> new InMemoryBaseRepository<>());
         return meals.save(meal);
     }
 
     @Override
     public boolean delete(int id, int userId) {
-        InMemoryBaseRepository<Meal> meals = userMealsMap.get(userId);
+        var meals = userMealsMap.get(userId);
         return meals != null && meals.delete(id);
     }
 
     @Override
     public Meal get(int id, int userId) {
-        InMemoryBaseRepository<Meal> meals = userMealsMap.get(userId);
+        var meals = userMealsMap.get(userId);
         return meals == null ? null : meals.get(id);
     }
 
@@ -69,7 +69,7 @@ public class InMemoryMealRepository implements MealRepository {
     }
 
     private List<Meal> getAllFiltered(int userId, Predicate<Meal> filter) {
-        InMemoryBaseRepository<Meal> meals = userMealsMap.get(userId);
+        var meals = userMealsMap.get(userId);
         return meals == null ? Collections.emptyList() :
                 meals.getCollection().stream()
                         .filter(filter)
