@@ -1,7 +1,9 @@
 package ru.javawebinar.topjava.repository;
 
+import org.springframework.lang.Nullable;
 import ru.javawebinar.topjava.model.Meal;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
@@ -20,5 +22,5 @@ public interface MealRepository {
     Collection<Meal> getAll(int userId);
 
     // ORDERED dateTime desc
-    List<Meal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId);
+    List<Meal> getBetweenInclusive(@Nullable LocalDate startDate, LocalDate endDate, int userId);
 }

@@ -8,11 +8,9 @@ import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Collection;
 import java.util.List;
 
-import static ru.javawebinar.topjava.util.TimeUtil.createDateTime;
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
@@ -48,8 +46,6 @@ public class MealService {
     }
 
     public List<Meal> getBetweenDates(@Nullable LocalDate startDate, @Nullable LocalDate endDate, int userId) {
-        return repository.getBetween(
-                createDateTime(startDate, LocalDate.MIN, LocalTime.MIN),
-                createDateTime(endDate, LocalDate.MAX, LocalTime.MAX), userId);
+        return repository.getBetweenInclusive(startDate, endDate, userId);
     }
 }

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import ru.javawebinar.topjava.model.Meal;
 import ru.javawebinar.topjava.repository.MealRepository;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -80,9 +80,11 @@ public class JdbcMealRepository implements MealRepository {
     }
 
     @Override
-    public List<Meal> getBetween(LocalDateTime startDateTime, LocalDateTime endDateTime, int userId) {
+    public List<Meal> getBetweenInclusive(LocalDate startDate, LocalDate endDate, int userId) {
+        startDate = (startDate == null ? LocalDate.MIN : startDate);
+        endDate = (endDate == null ? LocalDate.MAX : endDate);
         return jdbcTemplate.query(
-                "SELECT * FROM meals WHERE user_id=?  AND date_time BETWEEN  ? AND ? ORDER BY date_time DESC",
-                ROW_MAPPER, userId, startDateTime, endDateTime);
+                "SELECT * FROM meals WHERE user_id=?  AND CAST (date_time as date) BETWEEN  ? AND ? ORDER BY date_time DESC",
+                ROW_MAPPER, userId, startDate, endDate);
     }
 }
