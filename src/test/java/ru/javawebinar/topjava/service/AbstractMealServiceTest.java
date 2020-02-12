@@ -36,7 +36,7 @@ public abstract class AbstractMealServiceTest extends AbstractServiceTest{
     private static final Logger log = getLogger("result");
 
     @Autowired
-    private MealService service;
+    protected MealService service;
 
 
     @Test
