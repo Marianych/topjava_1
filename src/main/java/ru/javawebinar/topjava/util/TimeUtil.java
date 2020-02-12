@@ -37,15 +37,11 @@ public class TimeUtil {
     }
 
     public static LocalDateTime getStartInclusive(LocalDate localDate) {
-        return startOfDay(localDate != null ? localDate : MIN_DATE);
+        return (localDate != null ? localDate : MIN_DATE).atStartOfDay();
     }
 
     public static LocalDateTime getEndExclusive(LocalDate localDate) {
-        return startOfDay(localDate != null ? localDate.plus(1, ChronoUnit.DAYS) : MAX_DATE);
-    }
-
-    private static LocalDateTime startOfDay(LocalDate localDate) {
-        return LocalDateTime.of(localDate, LocalTime.MIN);
+        return (localDate != null ? localDate.plus(1, ChronoUnit.DAYS) : MAX_DATE).atStartOfDay();
     }
 }
 
