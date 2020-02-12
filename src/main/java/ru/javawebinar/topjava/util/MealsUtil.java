@@ -38,8 +38,16 @@ public final class MealsUtil {
 
     public static List<MealTo> getFilteredTo(Collection<Meal> meals, @Nullable LocalTime startTime, @Nullable LocalTime endTime, int caloriesPerDay) {
         List<MealTo> mealsTo = getTo(meals, caloriesPerDay);
+        if (startTime == null) {
+            startTime = LocalTime.MIN;
+        }
+        if (endTime == null) {
+            endTime = LocalTime.MAX;
+        }
+        LocalTime finalStartTime = startTime;
+        LocalTime finalEndTime = endTime;
         return mealsTo.stream()
-                .filter(mto -> isBetweenInclusive(mto.getTime(), startTime, endTime))
+                .filter(mto -> isBetweenInclusive(mto.getTime(), finalStartTime, finalEndTime))
                 .collect(Collectors.toList());
     }
 
