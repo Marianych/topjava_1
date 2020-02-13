@@ -22,7 +22,7 @@ public class TimeUtil {
     private TimeUtil() {
     }
 
-    public String toString(LocalDateTime ldt) {
+    public static String toString(LocalDateTime ldt) {
         return ldt == null ? "" : ldt.format(DATE_TIME_FORMATTER);
     }
 
