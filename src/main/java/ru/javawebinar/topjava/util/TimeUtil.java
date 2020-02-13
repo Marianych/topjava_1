@@ -16,8 +16,8 @@ public class TimeUtil {
 //        return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) <= 0;
 //    }
 
-    private static final LocalDate MIN_DATE = LocalDate.of(1, 1, 1);
-    private static final LocalDate MAX_DATE = LocalDate.of(3000, 1, 1);
+    private static final LocalDateTime MIN_DATE = LocalDate.of(1, 1, 1).atStartOfDay();
+    private static final LocalDateTime MAX_DATE = LocalDate.of(3000, 1, 1).atStartOfDay();
 
     private TimeUtil() {
     }
@@ -37,11 +37,11 @@ public class TimeUtil {
     }
 
     public static LocalDateTime getStartInclusive(LocalDate localDate) {
-        return (localDate != null ? localDate : MIN_DATE).atStartOfDay();
+        return localDate != null ? localDate.atStartOfDay() : MIN_DATE;
     }
 
     public static LocalDateTime getEndExclusive(LocalDate localDate) {
-        return (localDate != null ? localDate.plus(1, ChronoUnit.DAYS) : MAX_DATE).atStartOfDay();
+        return localDate != null ? localDate.plus(1, ChronoUnit.DAYS).atStartOfDay() : MAX_DATE;
     }
 }
 

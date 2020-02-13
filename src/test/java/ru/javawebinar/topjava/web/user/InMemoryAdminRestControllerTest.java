@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static ru.javawebinar.topjava.UserTestData.ADMIN;
+import static ru.javawebinar.topjava.UserTestData.USER_ID;
 
 public class InMemoryAdminRestControllerTest {
 
@@ -53,12 +54,10 @@ public class InMemoryAdminRestControllerTest {
     public void create() {
     }
 
-    @Test
+    @Test(expected = NotFoundException.class)
     public void delete() throws Exception {
-        controller.delete(UserTestData.USER_ID);
-        Collection<User> users = controller.getAll();
-        Assert.assertEquals(1, users.size());
-        Assert.assertEquals(ADMIN, users.iterator().next());
+        controller.delete(USER_ID);
+        controller.get(USER_ID);
     }
 
     @Test(expected = NotFoundException.class)
