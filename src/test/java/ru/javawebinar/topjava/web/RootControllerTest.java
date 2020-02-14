@@ -16,7 +16,7 @@ import static ru.javawebinar.topjava.util.MealsUtil.getTo;
 class RootControllerTest extends AbstractControllerTest {
 
     @Test
-    public void getUsers() throws Exception {
+    void getUsers() throws Exception {
         mockMvc.perform(get("/users"))
                 .andDo(print())
                 .andExpect(status().isOk())
