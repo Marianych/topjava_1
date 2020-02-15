@@ -5,8 +5,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
-public class MealTo {
-    private final Integer id;
+public class MealTo extends BaseTo {
 
     private final LocalDateTime dateTime;
 
@@ -18,7 +17,7 @@ public class MealTo {
 
     @ConstructorProperties({"id", "dateTime", "description", "calories", "excess"})
     public MealTo(Integer id, LocalDateTime dateTime, String description, int calories, boolean excess) {
-        this.id = id;
+        super(id);
         this.dateTime = dateTime;
         this.description = description;
         this.calories = calories;
@@ -43,10 +42,6 @@ public class MealTo {
 
     public boolean isExcess() {
         return excess;
-    }
-
-    public Integer getId() {
-        return id;
     }
 
     @Override
