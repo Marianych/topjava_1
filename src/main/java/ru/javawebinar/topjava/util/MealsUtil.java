@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 import static ru.javawebinar.topjava.util.Util.isBetweenInclusive;
 
 public final class MealsUtil {
-    public static final int DEFAULT_CALORIES_PER_DAY = 2000;
 
     private MealsUtil() {
     }

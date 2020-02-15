@@ -1,7 +1,7 @@
 package ru.javawebinar.topjava.web;
 
 import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
-import static ru.javawebinar.topjava.util.MealsUtil.DEFAULT_CALORIES_PER_DAY;
+import static ru.javawebinar.topjava.util.UserUtil.DEFAULT_CALORIES_PER_DAY;
 
 public final class SecurityUtil {
     private static int id = START_SEQ;
