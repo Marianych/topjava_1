@@ -10,14 +10,15 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class TimeUtil {
-    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    public static final String DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm";
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(DATE_TIME_PATTERN);
 //    moved to Util.class
 //    public static boolean isBetweenInclusive(LocalTime lt, LocalTime startTime, LocalTime endTime) {
 //        return lt.compareTo(startTime) >= 0 && lt.compareTo(endTime) <= 0;
 //    }
 
-    private static final LocalDateTime MIN_DATE = LocalDateTime.of(1, 1, 1,0,0);
-    private static final LocalDateTime MAX_DATE = LocalDateTime.of(3000, 1, 1,0,0);
+    private static final LocalDateTime MIN_DATE = LocalDateTime.of(1, 1, 1, 0, 0);
+    private static final LocalDateTime MAX_DATE = LocalDateTime.of(3000, 1, 1, 0, 0);
 
     private TimeUtil() {
     }
