@@ -26,7 +26,7 @@ class ProfileRestControllerTest extends AbstractControllerTest {
 
     @Test
     void get() throws Exception {
-        perform(doGet(REST_URL).basicAuth(USER))
+        perform(doGet().basicAuth(USER))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(USER_MATCHERS.contentJson(USER));

@@ -44,7 +44,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
         perform(doGet("by?email={email}", ADMIN.getEmail()).basicAuth(ADMIN))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(USER_MATCHERS.contentJson(USER));
+                .andExpect(USER_MATCHERS.contentJson(ADMIN));
     }
 
     @Test
