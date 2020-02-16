@@ -30,17 +30,17 @@
             </tr>
             </thead>
             <%--<c:forEach items="${users}" var="user">--%>
-                <%--<jsp:useBean id="user" type="ru.javawebinar.topjava.model.User"/>--%>
-                <%--<tr data-userEnabled="${user.enabled}">--%>
-                <%--<td><c:out value="${user.name}"/></td>--%>
-                <%--<td><a href="mailto:${user.email}">${user.email}</a></td>--%>
-                <%--<td>${user.roles}</td>--%>
-                <%--<td><input type="checkbox"--%>
-                           <%--<c:if test="${user.enabled}">checked</c:if> onclick="enable($(this), ${user.id})"/></td>--%>
-                <%--<td><fmt:formatDate value="${user.registered}" pattern="dd-MMMM-yyyy"/></td>--%>
-                <%--<td><a onclick="updateRow(${user.id})"><span class="fa fa-pencil"></span></a></td>--%>
-                <%--<td><a onclick="deleteRow(${user.id})"><span class="fa fa-remove"></span></a></td>--%>
-                <%--</tr>--%>
+            <%--<jsp:useBean id="user" type="ru.javawebinar.topjava.model.User"/>--%>
+            <%--<tr data-userEnabled="${user.enabled}">--%>
+            <%--<td><c:out value="${user.name}"/></td>--%>
+            <%--<td><a href="mailto:${user.email}">${user.email}</a></td>--%>
+            <%--<td>${user.roles}</td>--%>
+            <%--<td><input type="checkbox"--%>
+            <%--<c:if test="${user.enabled}">checked</c:if> onclick="enable($(this), ${user.id})"/></td>--%>
+            <%--<td><fmt:formatDate value="${user.registered}" pattern="dd-MMMM-yyyy"/></td>--%>
+            <%--<td><a onclick="updateRow(${user.id})"><span class="fa fa-pencil"></span></a></td>--%>
+            <%--<td><a onclick="deleteRow(${user.id})"><span class="fa fa-remove"></span></a></td>--%>
+            <%--</tr>--%>
             <%--</c:forEach>--%>
         </table>
     </div>
@@ -91,13 +91,7 @@
 </div>
 <jsp:include page="fragments/footer.jsp"/>
 </body>
-<script type="text/javascript">
-    const i18n = [];
-    i18n["addTitle"] = '<spring:message code="user.add"/>';
-    i18n["editTitle"] = '<spring:message code="user.edit"/>';
-
-    <c:forEach var="key" items='<%=new String[]{"common.deleted","common.saved","common.enabled","common.disabled","common.errorStatus","common.confirm"}%>'>
-    i18n["${key}"] = "<spring:message code="${key}"/>";
-    </c:forEach>
-</script>
+<jsp:include page="fragments/i18n.jsp">
+    <jsp:param name="page" value="user"/>
+</jsp:include>
 </html>
