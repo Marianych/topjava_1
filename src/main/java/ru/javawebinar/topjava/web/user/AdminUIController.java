@@ -24,7 +24,7 @@ public class AdminUIController extends AbstractUserController {
 
     @Override
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public User get(@PathVariable("id") int id) {
+    public User get(@PathVariable int id) {
         return super.get(id);
     }
 
@@ -39,15 +39,9 @@ public class AdminUIController extends AbstractUserController {
     public ResponseEntity<String> createOrUpdate(@Valid UserTo userTo, BindingResult result) {
         if (result.hasErrors()) {
             StringJoiner joiner = new StringJoiner("<br>");
-            result.getFieldErrors().forEach(fieldError -> {
-                String msg = fieldError.getDefaultMessage();
-                if (msg != null) {
-                    if (!msg.startsWith(fieldError.getField())) {
-                        msg = fieldError.getField() + ' ' + msg;
-                    }
-                    joiner.add(msg);
-                }
-            });
+            result.getFieldErrors().forEach(
+                    fieldError -> joiner.add(String.format("[%s] %s", fieldError.getField(), fieldError.getDefaultMessage())));
+
             return ResponseEntity.unprocessableEntity().body(joiner.toString());
         }
         if (userTo.isNew()) {
