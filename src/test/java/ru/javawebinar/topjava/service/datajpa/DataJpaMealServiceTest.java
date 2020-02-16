@@ -11,14 +11,15 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static ru.javawebinar.topjava.MealTestData.*;
 import static ru.javawebinar.topjava.Profiles.DATAJPA;
 import static ru.javawebinar.topjava.UserTestData.ADMIN_ID;
+import static ru.javawebinar.topjava.UserTestData.USER_MATCHERS;
 
 @ActiveProfiles(DATAJPA)
 class DataJpaMealServiceTest extends AbstractMealServiceTest {
     @Test
     void getWithUser() throws Exception {
         Meal adminMeal = service.getWithUser(ADMIN_MEAL_ID, ADMIN_ID);
-        assertMatch(adminMeal, ADMIN_MEAL1);
-        UserTestData.assertMatch(adminMeal.getUser(), UserTestData.ADMIN);
+        MEAL_MATCHERS.assertMatch(adminMeal, ADMIN_MEAL1);
+        USER_MATCHERS.assertMatch(adminMeal.getUser(), UserTestData.ADMIN);
     }
 
     @Test
