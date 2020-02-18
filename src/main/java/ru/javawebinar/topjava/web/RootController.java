@@ -12,6 +12,8 @@ public class RootController {
         return "redirect:meals";
     }
 
+    //    @Secured("ROLE_ADMIN")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/users")
     public String getUsers() {
         return "users";
@@ -22,8 +24,7 @@ public class RootController {
         return "login";
     }
 
-    //    @Secured("ROLE_ADMIN")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/meals")
     public String getMeals() {
         return "meals";
