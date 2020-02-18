@@ -73,5 +73,7 @@
         <property name="basenames" value="file:///D:/java/projects/topjava_1/config/messages/app"/>
         <property name="fallbackToSystemLocale" value="false"/>
     </bean>
-
+    <mvc:interceptors>
+        <bean class="ru.javawebinar.topjava.web.interceptor.ModelInterceptor"/>
+    </mvc:interceptors>
 </beans>
