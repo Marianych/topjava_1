@@ -8,7 +8,7 @@
     <div class="container">
         <a href="meals" class="navbar-brand"><img src="resources/images/icon-meal.png"> <spring:message code="app.title"/></a>
         <sec:authorize access="isAuthenticated()">
-        <form:form class="form-inline my-2">
+        <form:form class="form-inline my-2" action="logout" method="post">
             <sec:authorize access="hasRole('ROLE_ADMIN')">
             <a class="btn btn-info mr-1" href="users"><spring:message code="user.title"/></a>
             </sec:authorize>
