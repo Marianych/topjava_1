@@ -39,6 +39,7 @@ public class AdminUIController extends AbstractUserController {
     @PostMapping
     public ResponseEntity<String> createOrUpdate(@Valid UserTo userTo, BindingResult result) {
         if (result.hasErrors()) {
+            // TODO change to exception handler
             StringJoiner joiner = new StringJoiner("<br>");
             result.getFieldErrors().forEach(
                     fieldError -> joiner.add(String.format("[%s] %s", fieldError.getField(), fieldError.getDefaultMessage())));
