@@ -93,7 +93,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
     @Test
     void createWithLocation() throws Exception {
         User newUser = UserTestData.getNew();
-        ResultActions action = perform(doPost().jsonBody(newUser).basicAuth(ADMIN))
+        ResultActions action = perform(doPost().jsonUserWithPassword(newUser).basicAuth(ADMIN))
                 .andExpect(status().isCreated());
 
         User created = readFromJson(action, User.class);
