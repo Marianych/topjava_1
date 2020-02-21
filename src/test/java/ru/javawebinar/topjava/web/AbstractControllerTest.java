@@ -5,6 +5,8 @@ import org.springframework.http.MediaType;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.test.context.jdbc.SqlConfig;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -29,6 +31,8 @@ import static ru.javawebinar.topjava.web.AbstractControllerTest.RequestWrapper.w
         "classpath:spring/spring-mvc.xml",
         "classpath:spring/spring-db.xml"
 })
+@Sql(scripts = "classpath:db/populateDB.sql", config = @SqlConfig(encoding = "UTF-8"))
+
 @WebAppConfiguration
 //@ExtendWith(SpringExtension.class)
 @Transactional
